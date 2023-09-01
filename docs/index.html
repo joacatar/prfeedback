@@ -52,33 +52,35 @@
     <p>Order Number: <span id="displayOrderNumber"></span></p>
     <p>Provide feedback for:</p>
     <select id="name">
-        <option value="Chris C">ChrisC</option>
-        <option value="Angel E">AngelP</option>
-        <option value="Ariel C">ArielC</option>
-        <option value="Eloy G">EloyG</option>
-        <option value="Rodik F">RodikF</option>
-        <option value="Woodly P">WoodlyP</option>
-        <option value="Siddhant T">SiddhanT</option>
-        <option value="Yaneisy E">YaneisyE</option>
-        <option value="Sergio B">Sergio B</option>
-        <option value="Brian K">BrianK</option>
-        <option value="Ruben C">RubenC</option>
-        <option value="Yanny D">YannyD</option>
-        <option value="Armando B">ArmandoB</option>
-        <option value="Jordan T">JordanT</option>
-        <option value="Ayberk Y">AyberkY</option>
-        <option value="Joao T">JoaoT</option>
-        <option value="Stephen C">StephenC</option>
-        <option value="Maddiel M">MaddielM</option>
-        <option value="Lyndale C">LyndaleC</option>
+        <option value="chris.cronin@arthrex.com">ChrisC</option>
+        <option value="angel.esquilin@arthrex.com">AngelP</option>
+        <option value="ariel.cardenas@arthrex.com">ArielC</option>
+        <option value="eloy.grela@arthrex.com">EloyG</option>
+        <option value="rodik.figueroaecharri@arthrex.com">RodikF</option>
+        <option value="stephen.choi@arthrex.com">StephenC</option>
+        <option value="woodly.plancher@arthrex.com">WoodlyP</option>
+        <option value="harver.borbon-mendez@arthrex.com">HarverBorbon</option>
+        <option value="luis.cala@arthrex.com">LuisC</option>
+        <option value="yaneisy.delgado@arthrex.com">YaneisyDelgado</option>
+        <option value="sergio.barrera@arthrex.com">Sergio B</option>
+        <option value="brian.keary@arthrex.com">BrianK</option>
+        <option value="ruben.diaz@arthrex.com">RubenC</option>
+        <option value="yaneilys.diaz@arthrex.com">YannyD</option>
+        <option value="armando.becerra@arthrex.com">ArmandoB</option>
+        <option value="jordan.trakas@arthrex.com">JordanT</option>
+        <option value="ayberk.yagiz@arthrex.com">AyberkY</option>
+        <option value="joao.tarirabarroso@arthrex.com">JoaoT</option>
+        <option value="maddiel.martinez@arthrex.com">MaddielM</option>
+        <option value="lyndale.chambers@arthrex.com">LyndaleC</option>
         <option value="matteo.mckinney@arthrex.com">MatteoM</option>
-        <option value="Daniel V">DanielV</option>
-        <option value="Valerie N">ValerieN</option>
-        <option value="Aaron L">AaronL</option>
-        <option value="Carlos S">CarlosS</option>
-        <option value="Stephany V">StephanyV</option>
-        <option value="Gabriela P">GabrielaP</option>
-        <option value="">Jane</option>
+        <option value="daniel.valdescabrera@arthrex.com">DanielV</option>
+        <option value="valerie.nolasco@arthrex.com">ValerieN</option>
+        <option value="aaron.luther@arthrex.com">AaronL</option>
+        <option value="juan.soundara@arthrex.com">CarlosS</option>
+        <option value="stephany.valdesperez@arthrex.com">StephanyV</option>
+        <option value="gabriela.pozotrujillo@arthrex.com">GabrielaP</option>
+        <option value="fernando.cruzaguilar@arthrex.com">FernandoC</option>
+        <option value="kevin.fusco@arthrex.com">KevinF</option>
         <!-- Add more options as needed -->
     </select>
     <br>
@@ -155,7 +157,8 @@
     <p><strong>Scapula Landmarking Comments:</strong> <span id="q5Response"></span></p>
     <p><strong>Scapula Landmarks Additional Comments:</strong> <span id="q6Response"></span></p>
     <button onclick="copyFeedback()">Copy Feedback</button>
-    <button onclick="resetForm()">Start Over</button>
+    <p><a id="feedbackLink" href="javascript:void(0);" onclick="sendFeedbackByEmail();">Send Feedback by Email</a></p>
+<button onclick="resetForm()">Start Over</button>
 </div>
 
 <script>
@@ -237,6 +240,33 @@ function resetForm() {
     document.getElementById("page4").style.display = "none";
     document.getElementById("orderNumber").value = "";
     selectedName = "";
+}
+
+function generateFeedbackTemplate() {
+  const feedback = `
+      Peer Review Feedback for ${selectedName}
+      
+      Order Number: ${orderNumber}
+      
+      Feedback:
+      Segmentation Rating: ${q1Response}
+      Segmentation Comments: ${q2Response}
+      Additional Segmentation Comments: ${additionalCommentsResponse}
+      
+      Scapula Landmarking Rating: ${q4Response}
+      Scapula Landmarking Comments: ${q5Response}
+      Scapula Landmarks Additional Comments: ${q6Response}
+    `;
+  return feedback;
+}
+
+function sendFeedbackByEmail() {
+  const feedbackTemplate = generateFeedbackTemplate();
+  const subject = encodeURIComponent("Peer Review Feedback");
+  const body = encodeURIComponent(feedbackTemplate);
+  
+  const mailtoLink = `mailto:${selectedName}?subject=${subject}&body=${body}`;
+  window.location.href = mailtoLink;
 }
 </script>
 
