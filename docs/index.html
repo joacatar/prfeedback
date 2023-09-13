@@ -419,7 +419,7 @@ function showQuestion(c_question) {
         
     } else {
         questionCContainer.style.display = 'none';
-        // If "Outstanding" is selected, clear the selection in Questions
+        // If "Outstanding" is selected, clear the selection in Question 2
         const qNCCheckboxes = document.querySelectorAll('input[name="q1C"]');
         qNCCheckboxes.forEach(checkbox => (checkbox.checked = false));
     }
@@ -445,7 +445,8 @@ function handlePictureUpload() {
         pictureListItem.innerHTML = `<strong>Uploaded Picture:</strong> ${pictureFile.name}`;
         feedbackList.appendChild(pictureListItem);
 
-        // Include the picture in the email (not sure how)
+        // Include the picture in the email (optional)
+        // You can add the pictureFile to your feedback template here
     }
 }  
 
@@ -493,7 +494,7 @@ function generateFeedbackTemplate() {
                 feedback += key + ": " + response[key] + "\n";
             }
         }
-        feedback += "\n"; 
+        feedback += "\n"; // Add space after each section
     }
     const pictureFile = pictureUpload.files[0];
     if (pictureFile) {
