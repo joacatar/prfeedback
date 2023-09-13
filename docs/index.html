@@ -46,7 +46,7 @@
     <button onclick="showPage2()">Next</button>
 </div>
 
-<!-- Page 2: Name Selection -->
+<!-- Page 2: Documentation Questions Adding a feature to easily navigate in the form and adding picture box for each section  !!1 Page!!-->
 <div id="page2" style="display: none;">
     <h2>Peer Review for Planner</h2>
     <p>Order Number: <span id="displayOrderNumber"></span></p>
@@ -84,205 +84,194 @@
         <!-- Add more options as needed -->
     </select>
     <br>
-    <button onclick="showPage3()">Next</button>
-</div>
-
-<!-- Page 3: Documentation Questions -->
-<div id="page3" style="display: none;">
+    <hr>
     <h2>Documentation Feedback Questionnaire</h2>
-    <form onsubmit="showPage4(); return false;">
+    <form onsubmit="showPage3(); return false;">
         <label>Question 1: How would you rate the planner's selection of scan?</label><br>
-        <select id="q1">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
+        <select id="q1" onchange="showQuestion('q1');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
           <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
         </select>
         <br>
-        <label>Question 2: Scan Selection Feedback comments?</label><br>
-        <input type="checkbox" name="q2" value="Good or best scan choice chosen by planner"> Good or best scan choice chosen by planner<br>
-        <input type="checkbox" name="q2" value="Better scan choice available to have chosen"> Better scan choice available to have chosen<br>
-        <input type="checkbox" name="q2" value="Scan is a rejection and cannot be planned with"> Scan is a rejection and cannot be planned with<br>
+        <div id="q1Comments" style="display: none;">
+        <label>Scan Selection Feedback comments?</label><br>
+        <input type="checkbox" name="q1C" value="Meets Expectation or best scan choice chosen by planner"> Meets Expectation or best scan choice chosen by planner<br>
+        <input type="checkbox" name="q1C" value="Better scan choice available to have chosen"> Better scan choice available to have chosen<br>
+        <input type="checkbox" name="q1C" value="Scan is a rejection and cannot be planned with"> Scan is a rejection and cannot be planned with<br>     
+        <!-- Use a unique identifier for the "Other" checkbox and its associated text input -->
+        <input type="text" id="q1COtherText" name="q1COtherText" placeholder="Additional comments:">
         <br>
-        <label>Question 3: How would you rate the planner's rider form?</label><br>
-        <select id="q3">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
+        </div>
+        <label>Question 2: How would you rate the planner's rider form?</label><br>
+        <select id="q2" onchange="showQuestion('q2');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
           <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
         </select>
         <br>
-        <label>Question 4: Rider Form Feedback comments?</label><br>
-        <input type="checkbox" name="q4" value="Rider form reflects all correct information and is completely filled out"> Rider form reflects all correct information and is completely filled out<br>
-        <input type="checkbox" name="q4" value="Rider form is missing a few fields of information or is not signed"> Rider form is missing a few fields of information or is not signed<br>
+        <div id="q2Comments" style="display: none;">
+        <label>Rider Form Feedback comments?</label><br>
+        <input type="checkbox" name="q2C" value="Rider form reflects all correct information and is completely filled out"> Rider form reflects all correct information and is completely filled out<br>
+        <input type="checkbox" name="q2C" value="Rider form is missing a few fields of information or is not signed"> Rider form is missing a few fields of information or is not signed<br>
+        <input type="text" id="q2COtherText" name="q2COtherText" placeholder="Additional comments:">
         <br>
-        <label for="q5">Question 5: Additional documentation comments?</label>
-        <input type="text" id="q5">
+        </div>
+    <hr>
+    <!-- From Page 4: Segmentation Edits Questions -->  
+    <h2>Segmentation Feedback Questionnaire</h2>
+        <label>Question 3: How would you rate the planner's segmentation?</label><br>
+        <select id="q3" onchange="showQuestion('q3');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
+          <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
+        </select>
+        <br>
+        <div id="q3Comments" style="display: none;">
+        <label>Segmentation Feedback comments?</label><br>
+        <input type="checkbox" name="q3C" value="Soft tissue still remained around glenoid rim"> Soft tissue still remained around glenoid rim<br>
+        <input type="checkbox" name="q3C" value="Soft tissue still remained on glenoid face"> Soft tissue still remained on glenoid face<br>
+        <input type="checkbox" name="q3C" value="Excessive soft tissue was around scapula"> Excessive soft tissue was around scapula<br>
+        <input type="checkbox" name="q3C" value="Light humeral head remained on glenoid"> Light humeral head remained on glenoid<br>
+        <input type="checkbox" name="q3C" value="Major humeral head remained on glenoid"> Major humeral head remained on glenoid<br>
+        <input type="checkbox" name="q3C" value="Better thresholding choice was available"> Better thresholding choice was available<br>
+        <input type="checkbox" name="q3C" value="Better cortex choice was available for choosing"> Better cortex choice was available for choosing<br>
+
+        <input type="text" id="q3COtherText" name="q3COtherText" placeholder="Additional comments:">
+        <br>
+        </div>
+    <hr>
+    <!-- From Page 5: Scapula Landmarks Questions Add glenoid landmarks and make it one-->
+    <h2>Scapula Landmarks Feedback Questionnaire</h2>
+        <label>Question 4: How would you rate the planner's Scapula Landmarking?</label><br>
+        <select id="q4" onchange="showQuestion('q4');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
+          <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
+        </select>
+        <br>
+        <div id="q4Comments" style="display: none;">
+        <label>Scapula Landmarking Feedback comments?</label><br>
+        <input type="checkbox" name="q4C" value="Minor movement to glenoid center"> Minor movement to glenoid center<br>
+        <input type="checkbox" name="q4C" value="Minor movement to trigonum scapula"> Minor movement to trigonum scapula<br>
+        <input type="checkbox" name="q4C" value="Minor movement to angulus inferior"> Minor movement to angulus inferior<br>
+        <input type="checkbox" name="q4C" value="Glenoid Center only centered in one view"> Glenoid Center only centered in one view<br>
+        <input type="checkbox" name="q4C" value="Major movement to two or more landmarks"> Major movement to two or more landmarks<br>
+
+        <input type="text" id="q4COtherText" name="q4COtherText" placeholder="Additional comments:">
+        <br>
+        </div>
+        <label>Question 5: How would you rate the planner's Glenoid Landmarking?</label><br>
+        <select id="q5" onchange="showQuestion('q5');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
+          <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
+        </select>
+        <br>
+        <div id="q5Comments" style="display: none;">
+        <label>Glenoid Landmarking Feedback comments?</label><br>
+        <input type="checkbox" name="q5C" value="Minor movment of anterior or posterior glenoid rim landmark"> Minor movment of anterior or posterior glenoid rim landmark<br>
+        <input type="checkbox" name="q5C" value="Minor movment of superior glenoid rim landmark"> Minor movment of superior glenoid rim landmark<br>
+        <input type="checkbox" name="q5C" value="Glenoid plane too expanded on glenoid"> Glenoid plane too expanded on glenoid<br>
+        <input type="checkbox" name="q5C" value="Glenoid plane too cramped on glenoid"> Glenoid plane too cramped on glenoid<br>
+        <input type="checkbox" name="q5C" value="Major change to version"> Major change to version<br>
+        <input type="checkbox" name="q5C" value="Major change to inclination"> Major change to inclination<br>
+        <input type="checkbox" name="q5C" value="Reset glenoid plane landmarks to new locations"> Reset glenoid plane landmarks to new locations<br>
+        <input type="checkbox" name="q5C" value="Forgot to set some coracoid / acromion / scapular neck landmarks"> Forgot to set some coracoid / acromion / scapular neck landmarks<br>
+
+        <input type="text" id="q5COtherText" name="q5COtherText" placeholder="Additional comments:">
+        <br>
+        </div>
+    <hr>
+    <!-- From Page 6: Humeral Landmark Questions-->
+    <h2>Humeral Landmarks Feedback Questionnaire</h2>
+        <label>Question 6: How would you rate the planner's Humeral Landmarking?</label><br>
+        <select id="q6" onchange="showQuestion('q6');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
+          <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
+        </select>
+        <br>
+        <div id="q6Comments" style="display: none;">
+        <label>Humeral Landmark Feedback comments?</label><br>
+        <input type="checkbox" name="q6C" value="Minor correction to humeral shaft"> Minor correction to humeral shaft<br>
+        <input type="checkbox" name="q6C" value="Major correction to humeral shaft"> Major correction to humeral shaft<br>
+        <input type="checkbox" name="q6C" value="Humeral plane directed more through humeral head or changed Neck Shaft Angle"> Humeral plane directed more through humeral head or changed Neck Shaft Angle<br>
+        <input type="checkbox" name="q6C" value="Slight change to other humeral landmarks"> Slight change to other humeral landmarks<br>
+        <input type="checkbox" name="q6C" value="Forgot to place one or more other humeral landmarks"> Forgot to place one or more other humeral landmarks<br>
+        <input type="checkbox" name="q6C" value="Humeral head size reduced or increased"> Humeral head size reduced or increased<br>
+
+        <input type="text" id="q6COtherText" name="q6COtherText" placeholder="Additional comments:">
+        <br>
+        </div>
+    <hr>
+    <!-- From Page 7: Humeral Head Implant Questions-->
+    <h2>Humeral Implant Feedback Questionnaire</h2>
+        <label>Question 7: How would you rate the planner's Humeral Implant?</label><br>
+        <select id="q7" onchange="showQuestion('q7');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
+          <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
+        </select>
+        <br>
+        <div id="q7Comments" style="display: none;">
+        <label>Humeral Implant Feedback comments?</label><br>
+        <input type="checkbox" name="q7C" value="Humeral stem selection not appropiate for anatomy"> Humeral stem selection not appropiate for anatomy<br>
+        <input type="checkbox" name="q7C" value="Sample input"> Sample input<br>
+        <input type="checkbox" name="q7C" value="Sample input"> Sample input<br>
+        <input type="checkbox" name="q7C" value="Sample input"> Sample input<br>
+        <input type="checkbox" name="q7C" value="Sample input"> Sample input<br>
+
+        <input type="text" id="q7COtherText" name="q7COtherText" placeholder="Additional comments:">
+        <br>
+        </div>
+    <hr>
+    <!-- From Page 8: Glenoid Implant Questions-->
+    <h2>Glenoid Implant Feedback Questionnaire</h2>
+        <label>Question 8: How would you rate the planner's Glenoid Implant?</label><br>
+        <select id="q8" onchange="showQuestion('q8');">
+          <option value="Outstanding">Outstanding</option>
+          <option value="Meets Expectation">Meets Expectation</option>
+          <option value="Needs Improvement">Needs Improvement</option>
+          <option value="Sent Back">Sent Back</option>
+        </select>
+        <br>
+        <div id="q8Comments" style="display: none;">
+        <label>Glenoid Implant Feedback comments?</label><br>
+        <input type="checkbox" name="q8C" value="Rolled to better superior implant trajectory"> Rolled to better superior implant trajectory<br>
+        <input type="checkbox" name="q8C" value="Implant version changed"> Implant version changed<br>
+        <input type="checkbox" name="q8C" value="Implant inclination changed"> Implant inclination changed<br>
+        <input type="checkbox" name="q8C" value="Implant downsizing unnecessary"> Implant downsizing unnecessary<br>
+        <input type="checkbox" name="q8C" value="Perforated a polyethylene component(VL)"> Perforated a polyethylene component(VL)<br>
+        <input type="checkbox" name="q8C" value="Medialized slightly too deep into glenoid"> Medialized slightly too deep into glenoid<br>
+        <input type="checkbox" name="q8C" value="Able to achieve 100% backside seating"> Able to achieve 100% backside seating<br>
+
+        <input type="text" id="q8COtherText" name="q8COtherText" placeholder="Additional comments:">
+        <br>
+        </div>
+
+      <label>Upload Picture (JPEG or PNG):</label>
+      <input type="file" id="pictureUpload" accept=".jpg, .jpeg, .png">
+      
         <button type="submit">Next</button>
     </form>
 </div>
   
-<!-- Page 4: Segmentation Edits Questions -->
-<div id="page4" style="display: none;">
-    <h2>Segmentation Feedback Questionnaire</h2>
-    <form onsubmit="showPage5(); return false;">
-        <label>Question 6: How would you rate the planner's segmentation?</label><br>
-        <select id="q6">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
-          <option value="Needs Improvement">Needs Improvement</option>
-        </select>
-        <br>
-        <label>Question 7: Segmentation Feedback comments?</label><br>
-        <input type="checkbox" name="q7" value="Soft tissue still remained around glenoid rim"> Soft tissue still remained around glenoid rim<br>
-        <input type="checkbox" name="q7" value="Soft tissue still remained on glenoid face"> Soft tissue still remained on glenoid face<br>
-        <input type="checkbox" name="q7" value="Excessive soft tissue was around scapula"> Excessive soft tissue was around scapula<br>
-        <input type="checkbox" name="q7" value="Light humeral head remained on glenoid"> Light humeral head remained on glenoid<br>
-        <input type="checkbox" name="q7" value="Major humeral head remained on glenoid"> Major humeral head remained on glenoid<br>
-        <input type="checkbox" name="q7" value="Better thresholding choice was available"> Better thresholding choice was available<br>
-        <input type="checkbox" name="q7" value="Better cortex choice was available for choosing"> Better cortex choice was available for choosing<br>
-        <br>
-        <label for="q8">Question 8: Additional segmentation comments?</label>
-        <input type="text" id="q8">
-        <button type="submit">Next</button>
-    </form>
-</div>
-
-<!-- Page 5: Scapula Landmarks Questions Add glenoid landmarks and make it one-->
-<div id="page5" style="display: none;">
-    <h2>Scapula Landmarks Feedback Questionnaire</h2>
-    <form onsubmit="showPage6(); return false;">
-        <label>Question 9: How would you rate the planner's Scapula Landmarking?</label><br>
-        <select id="q9">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
-          <option value="Needs Improvement">Needs Improvement</option>
-        </select>
-        <br>
-        <label>Question 10: Scapula Landmarking Feedback comments?</label><br>
-        <input type="checkbox" name="q10" value="Minor movement to glenoid center"> Minor movement to glenoid center<br>
-        <input type="checkbox" name="q10" value="Minor movement to trigonum scapula"> Minor movement to trigonum scapula<br>
-        <input type="checkbox" name="q10" value="Minor movement to angulus inferior"> Minor movement to angulus inferior<br>
-        <input type="checkbox" name="q10" value="Glenoid Center only centered in one view"> Glenoid Center only centered in one view<br>
-        <input type="checkbox" name="q10" value="Major movement to two or more landmarks"> Major movement to two or more landmarks<br>
-        <br>
-        <label>Question 11: How would you rate the planner's Glenoid Landmarking?</label><br>
-        <select id="q11">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
-          <option value="Needs Improvement">Needs Improvement</option>
-        </select>
-        <br>
-        <label>Question 12: Glenoid Landmarking Feedback comments?</label><br>
-        <input type="checkbox" name="q12" value="Minor movment of anterior or posterior glenoid rim landmark"> Minor movment of anterior or posterior glenoid rim landmark<br>
-        <input type="checkbox" name="q12" value="Minor movment of superior glenoid rim landmark"> Minor movment of superior glenoid rim landmark<br>
-        <input type="checkbox" name="q12" value="Glenoid plane too expanded on glenoid"> Glenoid plane too expanded on glenoid<br>
-        <input type="checkbox" name="q12" value="Glenoid plane too cramped on glenoid"> Glenoid plane too cramped on glenoid<br>
-        <input type="checkbox" name="q12" value="Major change to version"> Major change to version<br>
-        <input type="checkbox" name="q12" value="Major change to inclination"> Major change to inclination<br>
-        <input type="checkbox" name="q12" value="Reset glenoid plane landmarks to new locations"> Reset glenoid plane landmarks to new locations<br>
-        <input type="checkbox" name="q12" value="Forgot to set some coracoid / acromion / scapular neck landmarks"> Forgot to set some coracoid / acromion / scapular neck landmarks<br>
-        <br>
-        <label for="q13">Question 13: Scapula Landmarking Additional comments?</label>
-        <input type="text" id="q13">
-        <br>
-        <button type="submit">Next</button>
-    </form>
-</div>
-
-<!-- Page 6: Humeral Landmark Questions-->
-<div id="page6" style="display: none;">
-    <h2>Humeral Landmarks Feedback Questionnaire</h2>
-    <form onsubmit="showPage7(); return false;">
-        <label>Question 14: How would you rate the planner's Humeral Landmarking?</label><br>
-        <select id="q14">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
-          <option value="Needs Improvement">Needs Improvement</option>
-        </select>
-        <br>
-        <label>Question 15: Humeral Landmark Feedback comments?</label><br>
-        <input type="checkbox" name="q5" value="Minor correction to humeral shaft"> Minor correction to humeral shaft<br>
-        <input type="checkbox" name="q5" value="Major correction to humeral shaft"> Major correction to humeral shaft<br>
-        <input type="checkbox" name="q5" value="Humeral plane directed more through humeral head or changed Neck Shaft Angle"> Humeral plane directed more through humeral head or changed Neck Shaft Angle<br>
-        <input type="checkbox" name="q5" value="Slight change to other humeral landmarks"> Slight change to other humeral landmarks<br>
-        <input type="checkbox" name="q5" value="Forgot to place one or more other humeral landmarks"> Forgot to place one or more other humeral landmarks<br>
-        <input type="checkbox" name="q5" value="Humeral head size reduced or increased"> Humeral head size reduced or increased<br>
-        <br>
-        <label for="q16">Question 16: Additional comments?</label>
-        <input type="text" id="q16">
-        <br>
-        <button type="submit">Next</button>
-    </form>
-</div>
-
-<!-- Page 7: Humeral Head Implant Questions-->
-<div id="page7" style="display: none;">
-    <h2>Humeral Implant Feedback Questionnaire</h2>
-    <form onsubmit="showPage8(); return false;">
-        <label>Question 17: How would you rate the planner's Humeral Implant?</label><br>
-        <select id="q17">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
-          <option value="Needs Improvement">Needs Improvement</option>
-        </select>
-        <br>
-        <label>Question 18: Humeral Implant Feedback comments?</label><br>
-        <input type="checkbox" name="q18" value="Humeral stem selection not appropiate for anatomy"> Humeral stem selection not appropiate for anatomy<br>
-        <input type="checkbox" name="q18" value="Sample input"> Sample input<br>
-        <input type="checkbox" name="q18" value="Sample input"> Sample input<br>
-        <input type="checkbox" name="q18" value="Sample input"> Sample input<br>
-        <input type="checkbox" name="q18" value="Sample input"> Sample input<br>
-        <br>
-        <label for="q19">Question 19: Humeral Implant Additional comments?</label>
-        <input type="text" id="q19">
-        <br>
-        <button type="submit">Next</button>
-    </form>
-</div>
-
-<!-- Page 8: Glenoid Implant Questions-->
-<div id="page8" style="display: none;">
-    <h2>Glenoid Implant Feedback Questionnaire</h2>
-    <form onsubmit="showPage9(); return false;">
-        <label>Question 20: How would you rate the planner's Glenoid Implant?</label><br>
-        <select id="q20">
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Average">Average</option>
-          <option value="Needs Improvement">Needs Improvement</option>
-        </select>
-        <br>
-        <label>Question 21: Glenoid Implant Feedback comments?</label><br>
-        <input type="checkbox" name="q21" value="Rolled to better superior implant trajectory"> Rolled to better superior implant trajectory<br>
-        <input type="checkbox" name="q21" value="Implant version changed"> Implant version changed<br>
-        <input type="checkbox" name="q21" value="Implant inclination changed"> Implant inclination changed<br>
-        <input type="checkbox" name="q21" value="Implant downsizing unnecessary"> Implant downsizing unnecessary<br>
-        <input type="checkbox" name="q21" value="Perforated a polyethylene component(VL)"> Perforated a polyethylene component(VL)<br>
-        <input type="checkbox" name="q21" value="Medialized slightly too deep into glenoid"> Medialized slightly too deep into glenoid<br>
-        <input type="checkbox" name="q21" value="Able to achieve 100% backside seating"> Able to achieve 100% backside seating<br>
-        <br>
-        <label for="q22">Question 22: Glenoid Implant Additional comments?</label>
-        <input type="text" id="q22">
-        <br>
-        <button type="submit">Next</button>
-    </form>
-</div>
-
-<!-- Page 9: Email Template Add hyperlink, so it can send email through outlook-->
-<div id="page9" style="display: none;">
+<!-- Page 3: Email Template Add hyperlink, so it can send email through outlook-->
+<div id="page3" style="display: none;">
     <h3>Peer Review Feedback for <span id="selectedNameEmail"></span></h3>
     <p>Order Number: <span id="displayOrderNumberEmail"></span></p>
     <p>Feedback:</p>
     <br>
     <ul id="feedbackList"></ul>
-    <button onclick="copyFeedback()">Copy Feedback</button>
-    <p><a id="feedbackLink" href="javascript:void(0);" onclick="sendFeedbackByEmail();">Send Feedback by Email</a></p>
+    <button onclick="sendFeedbackByEmail()">Generate Email</button>
 <button onclick="resetForm()">Start Over</button>
 </div>
 
@@ -291,117 +280,77 @@ let selectedName = "";
 let responses = []
 let ONumber ="";
 
-
 function showPage2() {
     const orderNumber = document.getElementById("orderNumber").value;
     if (orderNumber) {
         document.getElementById("displayOrderNumber").textContent = orderNumber;
         ONumber = orderNumber
+        document.getElementById("displayOrderNumberEmail").textContent = document.getElementById("orderNumber").value;
         document.getElementById("page1").style.display = "none";
         document.getElementById("page2").style.display = "block";
+        const pictureUpload = document.getElementById("pictureUpload");
+        pictureUpload.addEventListener("change", handlePictureUpload);
     } else {
         alert("Please enter an order number.");
     }
 }
 
+
 function showPage3() {
     selectedName = document.getElementById("name").value;
     document.getElementById("selectedNameEmail").textContent = selectedName;
-    document.getElementById("displayOrderNumberEmail").textContent = document.getElementById("orderNumber").value;
-    document.getElementById("page2").style.display = "none";
-    document.getElementById("page3").style.display = "block";
-}
-
-function showPage4() {
     q1Response = document.getElementById('q1').value;
-    q2Response = getSelectedCheckboxes('q2');
+    q1CResponse = getSelectedCheckboxes('q1C');
+    q2Response = document.getElementById('q3').value;
+    q2CResponse = getSelectedCheckboxes('q2C');
     q3Response = document.getElementById('q3').value;
-    q4Response = getSelectedCheckboxes('q4');
-    q5Response = document.getElementById("q5").value;
+    q3CResponse = getSelectedCheckboxes('q3C');
+    q4Response = document.getElementById('q4').value;
+    q4CResponse = getSelectedCheckboxes('q4C');
+    q5Response = document.getElementById('q5').value;
+    q5CResponse = getSelectedCheckboxes('q5C'); 
+    q6Response = document.getElementById('q6').value;
+    q6CResponse = getSelectedCheckboxes('q6C');  
+    q7Response = document.getElementById('q7').value;
+    q7CResponse = getSelectedCheckboxes('q7C');   
+    q8Response = document.getElementById('q8').value;
+    q8CResponse = getSelectedCheckboxes('q8C');   
     responses.push({
       type:"Documentation Feedback",
       Scan_rating: q1Response,
-      Scan_comments: q2Response,
-      Rider_rating: q3Response,
-      Rider_comments: q4Response,
-      Documentation_add_comments: q5Response
+      Scan_comments: q1CResponse,
+      Rider_rating: q2Response,
+      Rider_comments: q2CResponse,
     })
-    document.getElementById("page3").style.display = "none";
-    document.getElementById("page4").style.display = "block";
-}
-
-function showPage5() {
-    q6Response = document.getElementById('q6').value;
-    q7Response = getSelectedCheckboxes('q7');
-    q8Response = document.getElementById("q8").value;
     responses.push({
         type: "Segmentation Feedback",
-        Segmentation_rating: q6Response,
-        Segmentation_comments: q7Response,
-        Segmentation_add_comments: q8Response
+        Segmentation_rating: q3Response,
+        Segmentation_comments: q3CResponse,
     });
-    document.getElementById("page4").style.display = "none";
-    document.getElementById("page5").style.display = "block";
-}
-
-function showPage6() {
-    q9Response = document.getElementById('q9').value;
-    q10Response = getSelectedCheckboxes('q10');
-    q11Response = document.getElementById('q11').value;
-    q12Response = getSelectedCheckboxes('q12');
-    q13Response = document.getElementById("q13").value;
     responses.push({
         type: "Scapula Landmarks Feedback",
-        Scapula_landmark_rating: q9Response,
-        Scapula_landmark_comments: q10Response,
-        Glenoid_landmark_rating: q11Response,
-        Glenoid_landmark_comments: q12Response,
-        Scapula_landmark_add_comments: q13Response
+        Scapula_landmark_rating: q4Response,
+        Scapula_landmark_comments: q4CResponse,
+        Glenoid_landmark_rating: q5Response,
+        Glenoid_landmark_comments: q5CResponse,
     });
-    document.getElementById("page5").style.display = "none";
-    document.getElementById("page6").style.display = "block";
-}
-
-function showPage7() {
-    q14Response = document.getElementById('q9').value;
-    q15Response = getSelectedCheckboxes('q10');
-    q16Response = document.getElementById('q11').value;
     responses.push({
         type: "Humeral Landmarks Feedback",
-        Humeral_landmark_rating: q9Response,
-        Humeral_landmark_comments: q10Response,
-        Humeral_landmark_add_comments: q11Response,
-    });
-    document.getElementById("page6").style.display = "none";
-    document.getElementById("page7").style.display = "block";
-}
-
-function showPage8() {
-    q17Response = document.getElementById('q9').value;
-    q18Response = getSelectedCheckboxes('q10');
-    q19Response = document.getElementById('q11').value;
+        Humeral_landmark_rating: q6Response,
+        Humeral_landmark_comments: q6CResponse,
+    });   
     responses.push({
         type: "Humeral Implant Feedback",
-        Humeral_implant_rating: q17Response,
-        Humeral_implant_comments: q18Response,
-        Humeral_implant_add_comments: q19Response,
+        Humeral_implant_rating: q7Response,
+        Humeral_implant_comments: q7CResponse,
     });
-    document.getElementById("page7").style.display = "none";
-    document.getElementById("page8").style.display = "block";
-}
-
-function showPage9() {
-    q20Response = document.getElementById('q9').value;
-    q21Response = getSelectedCheckboxes('q10');
-    q22Response = document.getElementById('q11').value;
     responses.push({
         type: "Glenoid Implant Feedback",
-        Glenoid_implant_rating: q9Response,
-        Glenoid_implant_comments: q10Response,
-        Glenoid_implant_add_comments: q13Response
-    });
-    document.getElementById("page8").style.display = "none";
-    document.getElementById("page9").style.display = "block";
+        Glenoid_implant_rating: q8Response,
+        Glenoid_implant_comments: q8CResponse,
+    });    
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page3").style.display = "block";
   
     const feedbackList = document.getElementById("feedbackList");
     feedbackList.innerHTML = ""; 
@@ -412,26 +361,98 @@ function showPage9() {
         feedbackList.appendChild(listItem);
 
         for (const key in response) {
-            if (key !== "type") {
+            if (key !== "type" && response[key]) {
                 const subListItem = document.createElement("li");
-                subListItem.innerHTML = `<strong>${key}:</strong> <br>${response[key]}`;
+                subListItem.className = 'ulremove';
+                subListItem.innerHTML = `<strong style="font-size: 80%;">${key}:</strong> <br><span style="font-size: 80%;">${response[key]}</span>`;
                 feedbackList.appendChild(subListItem);
             }
         }
-    const separator = document.createElement("hr");
-    feedbackList.appendChild(separator);
+      
+        const separator = document.createElement("hr");
+        feedbackList.appendChild(separator);
+    }
+  
+    // Include the uploaded picture (if available)
+    const pictureFile = pictureUpload.files[0];
+    if (pictureFile) {
+        const listItem = document.createElement("li");
+        const imageElement = document.createElement("img");
+
+        // Create a data URL from the uploaded file
+        const reader = new FileReader();
+        reader.onload = function () {
+            const img = new Image();
+            img.src = reader.result;
+
+            // Calculate the new dimensions while maintaining aspect ratio
+            let newWidth, newHeight;
+            if (img.width > img.height) {
+                // Landscape orientation
+                newWidth = "300px";
+                newHeight = "auto";
+            } else {
+                // Portrait orientation
+                newHeight = "300px";
+                newWidth = "auto";
+            }
+
+            // Set the new dimensions
+            imageElement.src = reader.result;
+            imageElement.style.maxWidth = newWidth;
+            imageElement.style.maxHeight = newHeight;
+        };
+        reader.readAsDataURL(pictureFile);
+
+        listItem.appendChild(imageElement);
+        feedbackList.appendChild(listItem);
     }
 }
 
+
+function showQuestion(c_question) {
+    const qNSelect = document.getElementById(c_question);
+    const questionCContainer = document.getElementById(c_question+'Comments');
+
+    if (qNSelect.value !== 'Outstanding') {
+        questionCContainer.style.display = 'block';
+        
+    } else {
+        questionCContainer.style.display = 'none';
+        // If "Outstanding" is selected, clear the selection in Question 2
+        const qNCCheckboxes = document.querySelectorAll('input[name="q1C"]');
+        qNCCheckboxes.forEach(checkbox => (checkbox.checked = false));
+    }
+}
+  
 function getSelectedCheckboxes(name) {
     const checkboxes = document.querySelectorAll('input[name="' + name + '"]:checked');
     const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+    const otherInput = document.getElementById(name + "OtherText");
+    const otherText = otherInput.value.trim();
+    if (otherText !== " ") {
+      selectedValues.push(otherText);
+    }
     return selectedValues.join(', ');
 }
 
+function handlePictureUpload() {
+    const pictureFile = pictureUpload.files[0]; // Get the uploaded file
+    if (pictureFile) {
+        // Display the picture on the page (optional)
+        const feedbackList = document.getElementById("feedbackList");
+        const pictureListItem = document.createElement("li");
+        pictureListItem.innerHTML = `<strong>Uploaded Picture:</strong> ${pictureFile.name}`;
+        feedbackList.appendChild(pictureListItem);
+
+        // Include the picture in the email (optional)
+        // You can add the pictureFile to your feedback template here
+    }
+}  
+
 function copyFeedback() {
     // Select the content of the page 9
-    var feedbackContent = document.getElementById("page9").innerText;
+    var feedbackContent = document.getElementById("page4").innerText;
 
     // Create a temporary textarea element to hold the content
     var textarea = document.createElement("textarea");
@@ -453,17 +474,11 @@ function copyFeedback() {
     alert("Feedback copied to clipboard!");
 }
 
-
 function resetForm() {
     document.getElementById("page1").style.display = "block";
     document.getElementById("page2").style.display = "none";
     document.getElementById("page3").style.display = "none";
     document.getElementById("page4").style.display = "none";
-    document.getElementById("page5").style.display = "none";
-    document.getElementById("page6").style.display = "none";
-    document.getElementById("page7").style.display = "none";
-    document.getElementById("page8").style.display = "none";
-    document.getElementById("page9").style.display = "none";
     document.getElementById("orderNumber").value = "";
     selectedName = "";
 }
@@ -480,6 +495,10 @@ function generateFeedbackTemplate() {
             }
         }
         feedback += "\n"; // Add space after each section
+    }
+    const pictureFile = pictureUpload.files[0];
+    if (pictureFile) {
+        feedback += "Uploaded Picture: " + pictureFile.name + "\n";
     }
     return feedback;
 }
